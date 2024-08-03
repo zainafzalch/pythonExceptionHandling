@@ -14,13 +14,17 @@
 
 # Task 4: Finally Add a finally block that thanks the user for using the weather forecast application, ensuring that this message is displayed regardless of whether an exception was caught or not.
 
+class WrongTempException(Exception):
+    """Exception raised when user inputs wrong temperature"""
+    pass
+
 try:
     temperature = int(input("Enter Temperature: "))
     def temp_conversion(temp_to_convert): 
         converted_temp = (temperature - 32) * 5/9
         return round(converted_temp, 2)
 except ValueError:
-    raise Exception("Only digits are allowed!")
+    raise WrongTempException("TEMPERATURE MUST BE IN DIGITS!")
 else:
     print(f"{str(temperature)} degrees Fahrenheit is {str(temp_conversion(temperature))} degrees Celsius.")
 finally:
